@@ -1,115 +1,171 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Dashboard</title>
-
-    <!-- Custom fonts for this template-->
-    <link href="{{asset('backend/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="{{asset('backend/css/sb-admin-2.min.css')}}" rel="stylesheet">
-
+<title>The News Reporter</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" type="text/css" href="{{asset('frontend/assets/font/font-awesome.min.css')}}" />
+<link rel="stylesheet" type="text/css" href="{{asset('frontend/assets/font/font.css')}}" />
+<link rel="stylesheet" type="text/css" href="{{asset('frontend/assets/css/bootstrap.min.css')}}" media="screen" />
+<link rel="stylesheet" type="text/css" href="{{asset('frontend/assets/css/style.css')}}" media="screen" />
+<link rel="stylesheet" type="text/css" href="{{asset('frontend/assets/css/responsive.css')}}" media="screen" />
+<link rel="stylesheet" type="text/css" href="{{asset('frontend/assets/css/jquery.bxslider.css')}}" media="screen" />
 </head>
-
-<body id="page-top">
-
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-
-        <!-- Sidebar -->
-        @include('layouts.bagian.sidebar')
-        
-        <!-- End of Sidebar -->
-
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
-
-            <!-- Main Content -->
-            <div id="content">
-
-                <!-- Topbar -->
-                @include('layouts.bagian.navbar')
-                <!-- End of Topbar -->
-
-
-                <div class = "row">
-                    <div class ="col-lg-12">
-                        <div class = "panel panel-default">
-                            <div class="panel-heading">
-                                Tampil Data Berita
-                            </div>
-                            <form Action="" method="post">
-                            @csrf
-                            @method('put')
-                                <div class="panel-body">
-                                <label>Judul:</label>
-                                <input type="text" class="form-control" name="judul" value="{{$berita->judul}}" disabled>
-                                </div>
-                                <div class="panel-body">
-                                    <label>Isi</label>
-                                    <input type="text" class="form-control" name="isi" value="{{$berita->isi}}" disabled>
-                                </div>
-                                <div class="panel-body">
-                                <label>Nama Kategori</label>
-                                <input type="text" class="form-control" name="nama_kategori" value="{{$berita->kategori->nama_kategori}}" disabled>
-                                </div>
-                                <div class="panel-body">
-                                 <label>Poto</label>
-                                <img src="{{ $berita->image() }}" height="75" style="padding:10px;" />
-                                </div>
-                                <div class="panel-body">
-                                <label>Nama Penulis</label>
-                                <input type="text" class="form-control" name="nama_penulis" value="{{$berita->nama_penulis}}" disabled>
-                                </div>
-                                <div class="panel-body">
-                                <label>Tanggal</label>
-                                <input type="date" class="form-control" name="tanggal" value="{{$berita->tanggal}}" disabled>
-                                </div>
-                    </form>
-                        </div>
-                         <!-- / .panel -->
-                    </div>
-                    <!-- /.col-lg-12-->
-                </div>
-
-
-                <!-- TABEL -->
-                    <!-- /.row -->
-                    </div>
-                <!-- /.container-fluid -->
-            </div>
-            <!-- /#page-wrapper -->
-
+<body>
+<div class="body_wrapper">
+  <div class="center">
+    <div class="header_area">
+      <div class="logo floatleft"><a href="#"><img src="{{asset('frontend/images/logo.png')}}" alt="" /></a></div>
+      <div class="top_menu floatleft">
+        <ul>
+          <li><a href="layouts/frontend">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact us</a></li>
+          <li><a href="#">Subscribe</a></li>
+          <li><a href="">Login</a></li>
+        </ul>
+      </div>
+      <div class="social_plus_search floatright">
+        <div class="social">
+          <ul>
+            <li><a href="#" class="twitter"></a></li>
+            <li><a href="#" class="facebook"></a></li>
+            <li><a href="#" class="feed"></a></li>
+          </ul>
         </div>
-        <!-- /#wrapper -->
+        <div class="search">
+          <form action="#" method="post" id="search_form">
+            <input type="text" value="Search news" id="s" />
+            <input type="submit" id="searchform" value="search" />
+            <input type="hidden" value="post" name="post_type" />
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="main_menu_area">
+      <ul id="nav">
+        <li><a href="#">Terbaru</a>
+          <ul>
+            <li><a href="#">Single item</a></li>
+            <li><a href="#">Single item</a></li>
+            <li><a href="#">Single item</a>
+              <ul>
+                <li><a href="#">Single item</a></li>
+                <li><a href="#">Single item</a></li>
+                <li><a href="#">Single item</a></li>
+                <li><a href="#">Single item</a></li>
+                <li><a href="#">Single item</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Single item</a></li>
+            <li><a href="#">Single item</a></li>
+          </ul>
+        </li>
+        <ul id="nav">
+        <li><a href="#">olahraga</a>
+          <ul>
+            <li><a href="#">Sepak bola</a></li>
+            <li><a href="#">Bulu tangkis</a></li>
+            <li><a href="#">Bola voli</a>
+              <ul>
+                <li><a href="#">Bola basket</a></li>
+                <li><a href="#">Single item</a></li>
+                <li><a href="#">Single item</a></li>
+                <li><a href="#">Single item</a></li>
+                <li><a href="#">Single item</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Single item</a></li>
+            <li><a href="#">Single item</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Ekonomi & Bisnis</a>
+          <ul>
+            <li><a href="#">Single item</a></li>
+            <li><a href="#">Single item</a></li>
+            <li><a href="#">Single item</a></li>
+            <li><a href="#">Single item</a></li>
+            <li><a href="#">Single item</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Entertainment</a>
+          <ul>
+            <li><a href="#">Single item</a></li>
+            <li><a href="#">Single item</a></li>
+            <li><a href="#">Single item</a>
+              <ul>
+                <li><a href="#">Single item</a></li>
+                <li><a href="#">Single item</a></li>
+                <li><a href="#">Single item</a></li>
+                <li><a href="#">Single item</a></li>
+                <li><a href="#">Single item</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Single item</a></li>
+            <li><a href="#">Single item</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Politik</a>
+          <ul>
+            <li><a href="#">Single item</a></li>
+            <li><a href="#">Single item</a></li>
+            <li><a href="#">Single item</a></li>
+            <li><a href="#">Single item</a></li>
+            <li><a href="#">Single item</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Berita dunia</a>
+          <ul>
+            <li><a href="#">Single item</a></li>
+            <li><a href="#">Single item</a></li>
+            <li><a href="#">Single item</a></li>
+            <li><a href="#">Single item</a></li>
+            <li><a href="#">Single item</a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+<html>
 
-        <!-- Bootstrap core JavaScript-->
-    <script src="{{asset('backend/vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('backend/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col md-12">
+<div class="card">
+    <div class="card-header bg-dark">
+    </div>
+    <div class="card-body">
+        <center>
+       <label for="">
+        </label>
+        <h2>{{ $berita->judul }}</h2>
+        <br>
+        <img src="{{ $berita->image()}}" alt="" style="width:600px; height:400px;" alt="poto">
+        <br>
+        <label for="">
+        </label>
+        <h2>{{ $berita->isi }}</h2>
+        <br>
 
-    <!-- Core plugin JavaScript-->
-    <script src="{{asset('backend/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+        <label for="">
+        </label>
+        <h1>{{ $berita->kategori->nama_kategori }}</h1>
+        <br>
 
-    <!-- Custom scripts for all pages-->
-    <script src="{{asset('backend/js/sb-admin-2.min.js')}}"></script>
+        <label for="">
+        </label>
+        <h2>{{ $berita->nama_penulis }}</h2>
+        <br>
 
-    <!-- Page level plugins -->
-    <script src="{{asset('backend/vendor/chart.js/Chart.min.js')}}"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="{{asset('backend/js/demo/chart-area-demo.js')}}"></script>
-    <script src="{{asset('backend/js/demo/chart-pie-demo.js')}}"></script>
-
-</body>
+        <label for="">
+        </label>
+        <h2>{{ $berita->tanggal }}</h2>
+        <br>
+</center>
+<center><a class="btn btn-danger ml-2" href="{{ route('berita.index') }}">Kembali</a></center>
+    </div>
+</div>
+</div>
+</div>
+</div>
 </html>
